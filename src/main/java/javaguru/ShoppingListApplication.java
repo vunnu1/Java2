@@ -1,15 +1,14 @@
-package java2;
+package javaguru;
 
-import java2.db.Database;
-import java2.db.InMemoryDatabase;
-import java2.services.AddProductService;
-import java2.services.GetShoppingListService;
-import java2.services.RemoveProductService;
-import java2.views.AddProductView;
-import java2.views.PrintShoppingListView;
-import java2.views.RemoveProductView;
 
+import javaguru.services.AddProductService;
+import javaguru.services.GetShoppingListService;
+import javaguru.services.RemoveProductService;
+
+import java.database.ProductRepository;
+import java.database.jdbc.ProductRepositoryImpl;
 import java.util.Scanner;
+import java.views.PrintShoppingListView;
 
 public class ShoppingListApplication {
 
@@ -19,13 +18,13 @@ public class ShoppingListApplication {
         // 2. Remove product from list
         // 3. Print shopping list to console
         // 4. Exit
-        
-        Database database = new InMemoryDatabase();
+
+        ProductRepository database = new ProductRepositoryImpl();
 
         AddProductService addProductService = new AddProductService(database);
         RemoveProductService removeProductService = new RemoveProductService(database);
         GetShoppingListService getShoppingListService = new GetShoppingListService(database);
-        
+
         AddProductView addProductView = new AddProductView(addProductService);
         RemoveProductView removeProductView = new RemoveProductView(removeProductService);
         PrintShoppingListView printShoppingListView = new PrintShoppingListView(getShoppingListService);
@@ -64,7 +63,3 @@ public class ShoppingListApplication {
     private static int getFromUserMenuItemToExecute() {
         System.out.print("Please enter menu item number to execute:");
         Scanner sc = new Scanner(System.in);
-        return Integer.parseInt(sc.nextLine());
-    }
-
-}

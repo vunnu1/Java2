@@ -1,6 +1,6 @@
-package java2.views;
+package javaguru.views;
 
-import java2.services.AddProductService;
+import javaguru.services.AddProductService;
 
 import java.util.Scanner;
 

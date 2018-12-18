@@ -1,6 +1,6 @@
-package java2.views;
+package javaguru.views;
 
-import java2.services.RemoveProductService;
+import javaguru.services.RemoveProductService;
 
 import java.util.Scanner;
 
